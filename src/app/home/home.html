@@ -1,0 +1,219 @@
+<div class="cursor-dot" #cursorDot></div>
+<div class="cursor-ring" #cursorRing></div>
+
+<nav [class.scrolled]="isScrolled">
+  <a class="nav-wordmark" routerLink="/">Velinea</a>
+
+  <div class="nav-links">
+    <a href="#shop">Shop</a>
+    <a href="#occasions">Occasions</a>
+    <a href="#about">About</a>
+  </div>
+
+  <a class="btn-nav" href="#shop">Order Now ↗</a>
+</nav>
+
+<section class="hero">
+<div class="petals">
+  @for (petal of petals; track $index) {
+    <div class="petal" [ngStyle]="petal.style">
+      <svg
+        [attr.width]="petal.size"
+        [attr.height]="petal.size"
+        viewBox="-2 -2 16 16"
+      >
+       <path [attr.d]="petal.path" fill="#9A0130"/>
+      </svg>
+    </div>
+  }
+</div>
+
+  
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="hero-content">
+    <p class="eyebrow">Luxury Tasty Bites</p>
+
+    <h1>
+      Sweet<br />
+      <em>Creations,</em><br />
+      Beautiful<br />
+      Moments
+    </h1>
+
+    <p class="hero-text">
+      Elegant cakes, floral desserts, and handcrafted gifts made with love for every occasion.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="#shop">Shop Now →</a>
+      <a class="btn-secondary" href="#occasions">Explore Occasions</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+
+      <div>
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Years of Love</div>
+      </div>
+
+      <div>
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Designs</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="hero-ring"></div>
+
+    <div class="image-wrapper">
+      <div class="image-float">
+        <div class="image-card">
+          <img src="/vil.jpeg" alt="Velinea cake" />
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-badge">
+      <div class="badge-icon">✓</div>
+      <div>
+        <div class="badge-title">Handcrafted</div>
+        <div class="badge-sub">Made fresh daily</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    @for (item of marqueeItems; track $index) {
+      <span class="marquee-item">
+        {{ item }}
+        <span class="marquee-dot"></span>
+      </span>
+    }
+  </div>
+</div>
+
+<section class="collections" id="shop">
+  <div class="section-header reveal">
+    <p class="section-label">Our Collections</p>
+    <h2 class="section-title">Made for your sweetest moments</h2>
+    <p class="section-sub">
+      Every creation is handcrafted with premium ingredients and designed to delight.
+    </p>
+  </div>
+
+  <div class="card-grid">
+    @for (card of cards; track card.title; let i = $index) {
+      <div class="card reveal" [style.transition-delay.s]="i * 0.15">
+        <div class="card-img-wrap">
+          <img [src]="card.image" [alt]="card.title" />
+          <span class="card-tag">{{ card.tag }}</span>
+        </div>
+
+        <div class="card-body">
+          <div>
+            <div class="card-title">{{ card.title }}</div>
+            <div class="card-sub">{{ card.sub }}</div>
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="features">
+  <div class="features-header reveal">
+    <p class="section-label">Why Velinea</p>
+    <h2 class="section-title">Where craft meets<br /><em>devotion</em></h2>
+  </div>
+
+  <div class="features-grid">
+    @for (feature of features; track feature.title; let i = $index) {
+      <div class="feature-card reveal" [style.transition-delay.s]="i * 0.1">
+        <div class="feature-icon">{{ feature.icon }}</div>
+        <div class="feature-title">{{ feature.title }}</div>
+        <div class="feature-desc">{{ feature.desc }}</div>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="testimonials" id="occasions">
+  <div class="testimonials-inner">
+    <p class="section-label reveal">What Clients Say</p>
+    <h2 class="section-title reveal">Stories of <em>sweetness</em></h2>
+
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+
+      <blockquote class="tquote">
+        "{{ testimonials[testimonialIndex].quote }}"
+      </blockquote>
+
+      <div class="tauthor">
+        <div class="tauthor-avatar">
+          {{ testimonials[testimonialIndex].init }}
+        </div>
+
+        <div>
+          <div class="tauthor-name">
+            {{ testimonials[testimonialIndex].name }}
+          </div>
+          <div class="tauthor-role">
+            {{ testimonials[testimonialIndex].role }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tcontrols">
+      <button class="tctrl" type="button" (click)="prevTestimonial()">←</button>
+
+      <div class="tdots">
+        @for (t of testimonials; track t.name; let i = $index) {
+          <button
+            class="tdot"
+            [class.active]="i === testimonialIndex"
+            type="button"
+            (click)="goTestimonial(i)">
+          </button>
+        }
+      </div>
+
+      <button class="tctrl" type="button" (click)="nextTestimonial()">→</button>
+    </div>
+  </div>
+</section>
+
+<div class="newsletter" id="about">
+  <p class="section-label">Stay Sweet</p>
+  <h3 class="section-title">Join our world of sweetness</h3>
+  <p>Get new collections, seasonal specials, and behind-the-scenes stories.</p>
+
+  <form class="newsletter-form" (submit)="$event.preventDefault()">
+    <input type="email" placeholder="Your email address" />
+    <button type="submit" class="btn-subscribe">Subscribe</button>
+  </form>
+</div>
+
+<footer>
+  <span class="footer-wordmark">Velinea</span>
+
+  <div class="footer-links">
+    <a href="#shop">Shop</a>
+    <a href="#occasions">Occasions</a>
+    <a href="#about">About</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <span class="footer-credit">Made with <span>♥</span> Velinea © 2025</span>
+</footer>

@@ -1,0 +1,55 @@
+<nav class="navbar" [class.scrolled]="isScrolled()">
+
+  <!-- Gold Progress Bar -->
+  <div class="progress-bar">
+    <div class="progress-fill" [style.width.%]="scrollProgress()"></div>
+  </div>
+
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a routerLink="/" class="logo">
+      <span class="logo-main">VELINEA</span>
+      <!-- <span class="logo-sub">TASTY BITES</span> -->
+    </a>
+
+    <!-- Links Desktop -->
+    <ul class="nav-links">
+      @for (link of navLinks; track link.path) {
+        <li>
+          <a [routerLink]="link.path"
+             routerLinkActive="active"
+             class="nav-link">
+            {{ link.label }}
+            <span class="link-line"></span>
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- CTA -->
+    <button class="cta-btn">Order Now ↗</button>
+
+    <!-- Mobile Hamburger -->
+    <button class="hamburger" (click)="toggleMenu()" [class.open]="isMenuOpen()">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  @if (isMenuOpen()) {
+    <div class="mobile-menu">
+      @for (link of navLinks; track link.path) {
+        <a [routerLink]="link.path"
+           routerLinkActive="active"
+           (click)="toggleMenu()"
+           class="mobile-link">
+          {{ link.label }}
+        </a>
+      }
+      <button class="cta-btn mobile-cta">Order Now ↗</button>
+    </div>
+  }
+
+</nav>

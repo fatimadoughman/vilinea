@@ -1,0 +1,322 @@
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+
+  background: rgba(255,248,250,.95);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(71,0,22,.08);
+
+  transition: .35s;
+}
+
+.navbar.scrolled{
+  box-shadow:0 10px 25px rgba(71,0,22,.08);
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.nav-inner{
+
+    max-width:1400px;
+    height:72px;
+
+    margin:auto;
+
+    padding:0 40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.logo{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    text-decoration:none;
+
+}
+
+.logo img{
+
+    width:40px;
+    height:40px;
+
+    object-fit:contain;
+
+}
+
+.logo-main{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:26px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+
+    color:#470016;
+
+}
+
+.logo-sub{
+
+    display:none;
+
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:48px;
+
+    list-style:none;
+
+}
+
+.nav-link{
+
+    position:relative;
+
+    text-decoration:none;
+
+    font-family:Poppins,sans-serif;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    letter-spacing:.6px;
+
+    color:#470016;
+
+    transition:.3s;
+
+}
+
+.nav-link::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    transform:translateX(-50%);
+
+    background:#9A0130;
+
+    transition:.3s;
+
+    border-radius:20px;
+
+}
+
+.nav-link:hover{
+
+    color:#9A0130;
+
+}
+
+.nav-link:hover::after,
+
+.nav-link.active::after{
+
+    width:100%;
+
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.cta-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    height:42px;
+
+    padding:0 28px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+    135deg,
+    #470016,
+    #750123
+    );
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+    0 8px 18px rgba(71,0,22,.15);
+
+}
+
+.cta-btn:hover{
+
+    transform:translateY(-2px);
+
+    background:linear-gradient(
+    135deg,
+    #750123,
+    #9A0130
+    );
+
+    box-shadow:
+    0 12px 24px rgba(71,0,22,.25);
+
+}
+
+/* ===========================
+   PROGRESS
+=========================== */
+
+.progress-bar{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    height:2px;
+
+    background:#ffeaf1;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    background:linear-gradient(
+    90deg,
+    #470016,
+    #9A0130,
+    #FE5D8D
+    );
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+.hamburger{
+
+    display:none;
+
+}
+
+.mobile-menu{
+
+    display:none;
+
+}
+
+@media(max-width:900px){
+
+.nav-links,
+.cta-btn{
+
+display:none;
+
+}
+
+.hamburger{
+
+display:flex;
+flex-direction:column;
+gap:5px;
+
+background:none;
+
+border:none;
+
+}
+
+.hamburger span{
+
+width:24px;
+height:2px;
+background:#470016;
+
+}
+
+.logo-main{
+
+font-size:23px;
+
+}
+
+.nav-inner{
+
+padding:0 20px;
+
+}
+
+}
+
+/* ===========================
+   BODY
+=========================== */
+
+body{
+
+background:#FFF8FA;
+
+font-family:Poppins,sans-serif;
+
+padding-top:72px;
+
+}

@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-50: #FFE6ED;
+  --color-100: #FFB8CD;
+  --color-200: #FE8AAD;
+  --color-300: #FE5D8D;
+  --color-400: #FE2F6D;
+  --color-500: #FE014D;
+  --color-600: #D0013F;
+  --color-700: #9A0130;
+  --color-800: #750123;
+  --color-900: #470016;
+  --color-950: #190008;
+}
+@keyframes petalFall {
+  0%   { transform: translateY(-100px) translateX(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.75; }
+  50%  { transform: translateY(50vh) translateX(45px) rotate(260deg); }
+  100% { transform: translateY(115vh) translateX(-35px) rotate(720deg); opacity: 0; }
+}
+@keyframes petalSway {
+  0%   { transform: translateX(0) rotate(0deg); }
+  50%  { transform: translateX(35px) rotate(18deg); }
+  100% { transform: translateX(-25px) rotate(-18deg); }
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
